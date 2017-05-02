@@ -49,7 +49,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><button type="button"
 									class="btn btn-primary navbar-btn addBtn">
-									<li class="fa fa-plus-square fa-fw"></li>新增产品
+									<li class="fa fa-plus-square fa-fw"></li>新增分类
 								</button></li>
 						</ul>
 					</div>

@@ -22,6 +22,11 @@
 				<comment>分享标题</comment>
 			</column>
 		</property>
+		<property name="scType" type="integer">
+			<column name="sc_type" default="0">
+				<comment>商城类型</comment>
+			</column>
+		</property>
 		<property name="activity" type="java.lang.Integer">
 			<column name="activity" >
 				<comment>是否活动</comment>

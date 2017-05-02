@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d23c56f0-3556-43b5-8aa3-36471e29b77c" name="kam" url="http://www.kam365.com">
+        <fileTransfer host="www.kam365.com" port="22000" rootFolder="/apps/kam" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22000" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

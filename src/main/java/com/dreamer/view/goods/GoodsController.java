@@ -18,8 +18,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/goods")
 public class GoodsController {
-
-
 	@RequestMapping(value = "/edit.json", method = RequestMethod.POST)
 	public Message edit(@ModelAttribute("parameter") Goods goods,MultipartHttpServletRequest request,
 						Double[] levelPrice, Integer[] levelThreshold,

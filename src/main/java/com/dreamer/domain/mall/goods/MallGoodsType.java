@@ -19,6 +19,8 @@ public class MallGoodsType {
 
     private Integer orderIndex;
 
+    private Integer scType;
+
     private MallGoodsType parentType;//上级类型
 
     private String img;//图片地址
@@ -73,6 +75,14 @@ public class MallGoodsType {
 
     public Date getUpdateTime() {
         return updateTime;
+    }
+
+    public Integer getScType() {
+        return scType;
+    }
+
+    public void setScType(Integer scType) {
+        this.scType = scType;
     }
 
     public void setUpdateTime(Date updateTime) {

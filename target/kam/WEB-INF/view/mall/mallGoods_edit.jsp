@@ -50,25 +50,38 @@
                                 <div class="col-md-4 col-xs-4 text-error"></div>
                             </div>
 
+                            <!--商城分类-->
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">商城分类</label>
+                                <div class="col-sm-6">
+                                    <select name="scType" id="scType"  class="form-control">
+                                        <option value="0" <c:if test="${parameter.entity.scType==0}">selected</c:if>>置换系统</option>
+                                        <option value="1" <c:if test="${parameter.entity.scType==1}">selected</c:if>>优惠系统</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-xs-4 text-error"></div>
+                            </div>
+
                             <!--产品分类-->
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">产品分类</label>
                                 <div class="col-sm-6">
 
-                                        <select name="mType"  class="form-control">
-                                            <option >
-                                                选择分类
-                                            </option>
-                                            <c:forEach items="${types}" var="type">
-
-                                                <option value="${type.id}" <c:if test="${type.id eq parameter.entity.mallGoodsType.id}">selected</c:if>>
-                                                        ${type.name}
-                                                </option>
-                                            </c:forEach>
+                                        <select name="mType" id="mType"  class="form-control">
+                                            <%--<option >--%>
+                                                <%--选择分类--%>
+                                            <%--</option>--%>
+                                            <%--<c:forEach items="${types}" var="type">--%>
+                                                <%--<option value="${type.id}" <c:if test="${type.id eq parameter.entity.mallGoodsType.id}">selected</c:if>>--%>
+                                                        <%--${type.name}--%>
+                                                <%--</option>--%>
+                                            <%--</c:forEach>--%>
                                         </select>
                                 </div>
                                 <div class="col-md-4 col-xs-4 text-error"></div>
                             </div>
+
+
 
                             <!--产品的利润sa -->
                             <div class="form-group" style="display: none">
@@ -334,7 +347,33 @@
                     , value = data.value;
             console.log(e, $el, value);
         });
+
+        buildSelect(${parameter.entity.scType},${parameter.entity.mallGoodsType.id});
+
+        $("#scType").change(function () {
+            buildSelect($(this).val(),${parameter.entity.mallGoodsType.id});
+        })
+
     });
+
+    function buildSelect(scType,currentTypeId) {
+        <%--var mTypes =$.parseJSON(${types});--%>
+        $("#mType").empty();
+        var mTypes =${types};
+        for(var mt in mTypes){
+            var mType = mTypes[mt];
+            if(mType.scType!=scType)continue;//如果不是当前类型就跳过
+            var option = $("<option>");
+            option.val(mType.id);
+            option.html(mType.name);
+
+            if(mType.id==currentTypeId){
+                option.attr("selected",true);
+            }
+            option.appendTo($("#mType"));
+        }
+        }
+
     function init() {
         $("#editName").focus().select();
         var btn = null;
@@ -352,7 +391,7 @@
                             alert("保存成功");
                             $(".quitBtn").click();
 //                            $("#searchDT").click();
-                            location.href.reload();
+                            location.reload();
                         } else {
                             alert("保存失败" + m.message);
                         }

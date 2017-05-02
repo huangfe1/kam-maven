@@ -6,6 +6,8 @@ import com.dreamer.domain.user.User;
 import com.dreamer.repository.mall.goods.MallGoodsDAO;
 import com.dreamer.repository.mall.goods.MallGoodsTypeDAO;
 import com.fasterxml.jackson.annotation.JsonView;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +70,12 @@ public class MallGoodsQueryController {
 			HttpServletRequest request, Model model) {
 		User user = (User) WebUtil.getCurrentUser(request);
 		List<MallGoodsType> mallGoodsTypeList = mallGoodsTypeDAO.findAll(1);
-		model.addAttribute("types",mallGoodsTypeList);
+
+        JsonConfig cfg = new JsonConfig();
+        cfg.setExcludes(new String[]{"handler","hibernateLazyInitializer"});
+		JSONArray typesJson = JSONArray.fromObject(mallGoodsTypeList,cfg);
+
+        model.addAttribute("types",typesJson);
 		if (user.isAdmin()) {
 			return "/mall/mallGoods_edit";
 		} else {

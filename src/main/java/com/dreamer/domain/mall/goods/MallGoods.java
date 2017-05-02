@@ -10,6 +10,14 @@ import java.util.Date;
 public class MallGoods implements java.io.Serializable {
 
 	private static final long serialVersionUID = -6000613049374262520L;
+
+	//置换商城
+	private static final int ZHSC = 0;
+	//优惠商城
+	private static final int YHSC = 0;
+	//商城类型
+	private Integer scType;
+
 	@JsonView(MallGoodsView.class)
 	private Integer id;
 	@JsonView(MallGoodsView.class)
@@ -109,6 +117,14 @@ public class MallGoods implements java.io.Serializable {
 		this.shelf = shelf;
 		this.voucher = voucher;
 		this.price = price;
+	}
+
+	public Integer getScType() {
+		return scType;
+	}
+
+	public void setScType(Integer scType) {
+		this.scType = scType;
 	}
 
 	public MallGoodsType getMallGoodsType() {

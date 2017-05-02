@@ -12,6 +12,11 @@
 				<comment>分类名称</comment>
 			</column>
 		</property>
+		<property name="scType"  type="integer">
+			<column name="sc_type" default="0">
+				<comment>商城类型</comment>
+			</column>
+		</property>
 
 		<property name="type" type="java.lang.Integer">
 			<column name="type" length="64" not-null="true">

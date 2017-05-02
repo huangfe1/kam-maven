@@ -24,8 +24,6 @@ import java.util.Optional;
 @RequestMapping("/mall/goods")
 public class MallGoodsController {
 
-	
-
 	@RequestMapping(value = "/edit.json", method = {RequestMethod.POST,RequestMethod.PUT})
 	public Message edit(
 			@ModelAttribute("parameter") MallGoods parameter,@RequestParam(value="img",required=false) MultipartFile file,
@@ -45,12 +43,6 @@ public class MallGoodsController {
 					String imgType =getImgType( file.getOriginalFilename());
 					mallGoodsHandler.addMallGoods(parameter,imgType,file.getBytes());
 				}
-//				if(Objects.isNull(file)||file.isEmpty()){
-//					mallGoodsHandler.modifyMallGoods(parameter,null,null);
-//				}else{
-//					String imgType =getImgType(file.getOriginalFilename());
-//					mallGoodsHandler.modifyMallGoods(parameter,imgType,file.getBytes());
-//				}
 			return Message.createSuccessMessage();
 		}catch(Exception exp){
 			exp.printStackTrace();
